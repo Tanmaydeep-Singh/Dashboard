@@ -84,7 +84,7 @@ const CoursesTable = () => {
             {currentCourses.map((course: Course, index: number) => (
               <tr key={index} className="border-t h-8">
                 <td className="py-4 px-6 text-sm font-medium text-gray-800 flex items-center">
-                  <Image src={"/icons/Image.png"} width={38} height={38} alt="Course" className="p-1" />
+                  <Image src={"/icons/image.png"} width={38} height={38} alt="Course" className="p-1" />
                   {course.title}
                 </td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.description}</td>
