@@ -5,25 +5,23 @@ import RecentActivityTable from "@/components/Dashboard/RecentActivityTable";
 import TopCourses from "@/components/Dashboard/TopCourses";
 
 export default function Home() {
-
   return (
     <>
-
-      <div className=" flex justify-around m-2">
-        <div className=" flex-col">
+      <div className="flex flex-col md:flex-row justify-between m-8 mx-20 space-y-4 md:space-y-0">
+        <div className="flex flex-col w-full md:w-2/3">
           <CardBlock />
-          <div className=" flex">
-            <RecentActivity/>
+          <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+            <RecentActivity />
             <TopCourses />
           </div>
         </div>
 
-        <RecentActivityTable />
+        <div className="w-full md:w-1/3 px-10">
+          <RecentActivityTable />
+        </div>
       </div>
 
       <CoursesTable />
-
     </>
-
   );
 }
