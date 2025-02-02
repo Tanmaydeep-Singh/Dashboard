@@ -1,50 +1,56 @@
 import React, { useState } from "react";
-import data from './courses.json';
+import data from "./courses.json";
 import Image from "next/image";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
-const courses = data;
+interface Course {
+  title: string;
+  description: string;
+  goal: string;
+  teachers: string[];
+  createdDate: string;
+  enrolled: string;
+  language: string;
+}
 
 const CoursesTable = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage: number = 5;
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentCourses = courses.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfLastItem: number = currentPage * itemsPerPage;
+  const indexOfFirstItem: number = indexOfLastItem - itemsPerPage;
+  const currentCourses: Course[] = data.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages: number = Math.ceil(data.length / itemsPerPage);
 
-  const totalPages = Math.ceil(courses.length / itemsPerPage);
+  const handlePageChange = (page: number): void => setCurrentPage(page);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+  const handleAction = (action: "edit" | "delete", courseTitle: string): void => {
+    const config = {
+      edit: {
+        title: `Edit Course: ${courseTitle}`,
+        text: "Do you want to make changes to this course?",
+        icon: "warning" as const,
+        confirmButtonText: "Edit",
+      },
+      delete: {
+        title: `Delete Course: ${courseTitle}?`,
+        text: "This action cannot be undone.",
+        icon: "error" as const,
+        confirmButtonText: "Yes, delete it!",
+      },
+    };
 
-  const handleEdit = (courseTitle: string) => {
     Swal.fire({
-      title: `Edit Course: ${courseTitle}`,
-      text: 'Do you want to make changes to this course?',
-      icon: 'warning',
+      ...config[action],
       showCancelButton: true,
-      confirmButtonText: 'Edit',
-      cancelButtonText: 'Cancel',
+      cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Editing...', '', 'success');
-      }
-    });
-  };
-
-  const handleDelete = (courseTitle: string) => {
-    Swal.fire({
-      title: `Are you sure you want to delete the course: ${courseTitle}?`,
-      text: 'This action cannot be undone.',
-      icon: 'error',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'Cancel',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire('Deleted!', `${courseTitle} has been deleted.`, 'success');
+        Swal.fire(
+          action === "edit" ? "Editing..." : "Deleted!",
+          action === "delete" ? `${courseTitle} has been deleted.` : "",
+          "success"
+        );
       }
     });
   };
@@ -57,56 +63,59 @@ const CoursesTable = () => {
         <table className="min-w-full">
           <thead className="bg-[#F5F4FF]">
             <tr>
-              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600">Course Title</th>
-              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600">Description</th>
-              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600">Goal of Course</th>
-              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600">Teacher</th>
-              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600">Created Date</th>
-              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600">Enrolled Students</th>
-              <th className="py-3 px-6 text-left text-sm font-medium text-gray-600">Language</th>
-              <th className="py-3 px-6 text-center text-sm font-medium text-gray-600">Actions</th>
+              {[
+                "Course Title",
+                "Description",
+                "Goal of Course",
+                "Teacher",
+                "Created Date",
+                "Enrolled Students",
+                "Language",
+                "Actions",
+              ].map((header) => (
+                <th key={header} className="py-3 px-6 text-left text-sm font-medium text-gray-600">
+                  {header}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {currentCourses.map((course, index) => (
+            {currentCourses.map((course: Course, index: number) => (
               <tr key={index} className="border-t h-8">
-                <td className="py-4 px-6 text-sm font-medium text-gray-800">{course.title}</td>
+                <td className="py-4 px-6 text-sm font-medium text-gray-800 flex items-center">
+                  <Image src={"/icons/Image.png"} width={38} height={38} alt="Course" className="p-1" />
+                  {course.title}
+                </td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.description}</td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.goal}</td>
                 <td className="py-4 px-6 text-sm flex space-x-2">
-                  {course.teachers.map((img, i) => (
-                    <Image
-                      key={i}
-                      src={'/icons/blob.jpeg'}
-                      width={32}
-                      height={32}
-                      alt="teacher"
-                      className="w-8 h-8 rounded-full border"
-                    />
+                  {course.teachers.map((img: string, i: number) => (
+                    <Image key={i} src={"/icons/blob.jpeg"} width={32} height={32} alt="Teacher" className="w-8 h-8 rounded-full border" />
                   ))}
                 </td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.createdDate}</td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.enrolled}</td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.language}</td>
-                <td className="py-4 px-6 text-center text-sm flex">
-                  <button
-                    className="text-blue-500 hover:text-blue-700"
-                    onClick={() => handleEdit(course.title)}
-                  >
-                    <Image src={'/icons/edit.png'} width={40} height={40} alt="edit" />
-                  </button>
-                  <button
-                    className="ml-2 text-red-500 hover:text-red-700"
-                    onClick={() => handleDelete(course.title)}
-                  >
-                    <Image src={'/icons/delete.png'} width={40} height={40} alt="delete" />
-                  </button>
+                <td className="py-4 px-6 text-center text-sm flex space-x-2">
+                  {[
+                    { icon: "edit.png", action: "edit", color: "blue" },
+                    { icon: "delete.png", action: "delete", color: "red" },
+                  ].map(({ icon, action, color }) => (
+                    <button
+                      key={action}
+                      className={`text-${color}-500 hover:text-${color}-700`}
+                      onClick={() => handleAction(action as "edit" | "delete", course.title)}
+                    >
+                      <Image src={`/icons/${icon}`} width={40} height={40} alt={action} />
+                    </button>
+                  ))}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
       <div className="flex justify-center mt-6">
         <button
           onClick={() => handlePageChange(currentPage - 1)}

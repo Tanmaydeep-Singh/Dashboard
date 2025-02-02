@@ -14,7 +14,7 @@ const Card = ({ title, value, icon }: CardInterface) => {
         <h2 className="text-xl font-semibold">{value}</h2>
         <Image src={icon} alt="Card Icon" width={40} height={40} className="w-10 h-10" />
       </div>
-      <h2 className=" m-0 text-md text-gray-600 ">{title}</h2>
+      <h2 className="text-md text-gray-600 ">{title}</h2>
     </div>
   );
 };

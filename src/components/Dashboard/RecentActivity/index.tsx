@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Line } from "react-chartjs-2";
 import {
     Chart as ChartJS,
@@ -44,10 +45,14 @@ const RecentActivity = () => {
 
 
     return (
-        <div className="p-4 bg-white shadow-md rounded-lg w-full md:w-2/4 m-3">
-            <div className="flex justify-between items-center">
+        <div className="overflow-hidden shadow-md rounded-lg w-full md:w-2/4 h-full">
+            <div className="flex justify-between items-center bg-[#F5F4FF] py-3 px-6 rounded-t-lg">
+                
                 <h2 className="text-lg font-semibold">Recent Activity</h2>
-                <button className="text-blue-600">View</button>
+                <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800">
+                    <span>View</span>
+                    <Image src={'/icons/arrow-right.png'} width={20} height={20} alt="arrow" />
+                </button>
             </div>
             <div className="mt-2 w-full h-[300px] pt-16">
                 <Line data={data} options={options} className="w-full h-full" />
