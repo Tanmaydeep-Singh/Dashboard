@@ -3,7 +3,7 @@
     "title": "Yearlong Classroom Contact Program (YCCP)",
     "description": "IIT/JEE COURSE",
     "goal": "IIT/JEE",
-    "teachers": ["/teacher1.jpg", "/teacher2.jpg", "/teacher3.jpg"],
+    "teachers": ["/icons/1.png", "/icons/2.png", "/icons/3.png"],
     "createdDate": "22 Jan 2022",
     "enrolled": "12K",
     "language": "Hindi, English"
@@ -12,7 +12,7 @@
     "title": "Yearlong Classroom Contact Program (YCCP)",
     "description": "IIT/JEE COURSE",
     "goal": "NEET",
-    "teachers": ["/teacher1.jpg", "/teacher2.jpg", "/teacher3.jpg"],
+    "teachers": ["/icons/1.png", "/icons/2.png", "/icons/3.png"],
     "createdDate": "20 Jan 2022",
     "enrolled": "12K",
     "language": "Hindi, English"
@@ -21,7 +21,7 @@
     "title": "Crash Course for IIT JEE Preparation",
     "description": "Intensive preparation for JEE Main and Advanced",
     "goal": "IIT/JEE",
-    "teachers": ["/teacher4.jpg", "/teacher5.jpg"],
+    "teachers": ["/icons/4.png", "/icons/5.png"],
     "createdDate": "10 Dec 2021",
     "enrolled": "8K",
     "language": "English"
@@ -30,7 +30,7 @@
     "title": "Fast Track NEET Coaching",
     "description": "Crash course for NEET aspirants",
     "goal": "NEET",
-    "teachers": ["/teacher3.jpg", "/teacher6.jpg"],
+    "teachers": ["/icons/1.png","/icons/2.png","/icons/3.png", "/icons/4.png","/icons/5.png","/icons/1.png","/icons/2.png","/icons/3.png"],
     "createdDate": "15 Nov 2021",
     "enrolled": "15K",
     "language": "Hindi"
@@ -39,7 +39,7 @@
     "title": "Advanced Mathematics for JEE",
     "description": "Master advanced topics for IIT/JEE",
     "goal": "IIT/JEE",
-    "teachers": ["/teacher2.jpg", "/teacher4.jpg"],
+    "teachers": ["/icons/2.png", "/icons/4.png"],
     "createdDate": "01 Oct 2021",
     "enrolled": "5K",
     "language": "English"
@@ -48,7 +48,7 @@
     "title": "NEET Preparation for Biology",
     "description": "Deep dive into NEET Biology syllabus",
     "goal": "NEET",
-    "teachers": ["/teacher6.jpg", "/teacher7.jpg"],
+    "teachers": ["/icons/1.png", "/icons/2.png"],
     "createdDate": "22 Dec 2021",
     "enrolled": "9K",
     "language": "Hindi, English"
@@ -57,7 +57,7 @@
     "title": "JEE Physics Mastery",
     "description": "In-depth physics concepts for JEE aspirants",
     "goal": "IIT/JEE",
-    "teachers": ["/teacher8.jpg", "/teacher2.jpg"],
+    "teachers": ["/icons/3.png", "/icons/2.png"],
     "createdDate": "5 Jan 2022",
     "enrolled": "7K",
     "language": "English"
@@ -66,7 +66,7 @@
     "title": "Target NEET: Chemistry Focus",
     "description": "Comprehensive NEET chemistry coaching",
     "goal": "NEET",
-    "teachers": ["/teacher9.jpg", "/teacher5.jpg"],
+    "teachers": ["/icons/4.png", "/icons/5.png"],
     "createdDate": "18 Nov 2021",
     "enrolled": "13K",
     "language": "Hindi"
@@ -75,7 +75,7 @@
     "title": "Crash Course for Class 12 Students",
     "description": "Fast-paced revision for Class 12 exams",
     "goal": "Class 12",
-    "teachers": ["/teacher10.jpg", "/teacher11.jpg"],
+    "teachers": ["/icons/5.png", "/icons/1.png"],
     "createdDate": "2 Dec 2021",
     "enrolled": "11K",
     "language": "Hindi, English"
@@ -84,7 +84,7 @@
     "title": "Foundation Program for JEE",
     "description": "Build strong fundamentals for JEE preparation",
     "goal": "IIT/JEE",
-    "teachers": ["/teacher7.jpg", "/teacher8.jpg"],
+    "teachers": ["/icons/2.png", "/icons/3.png"],
     "createdDate": "3 Aug 2021",
     "enrolled": "6K",
     "language": "English"
@@ -93,7 +93,7 @@
     "title": "NEET Pre-Medical Test Preparation",
     "description": "Complete preparation for NEET entrance test",
     "goal": "NEET",
-    "teachers": ["/teacher5.jpg", "/teacher6.jpg"],
+    "teachers": ["/icons/5.png", "/icons/1.png"],
     "createdDate": "25 Sep 2021",
     "enrolled": "14K",
     "language": "Hindi"
@@ -102,7 +102,7 @@
     "title": "Online JEE Coaching",
     "description": "Convenient online coaching for JEE aspirants",
     "goal": "IIT/JEE",
-    "teachers": ["/teacher2.jpg", "/teacher10.jpg"],
+    "teachers": ["/icons/2.png", "/icons/5.png"],
     "createdDate": "1 Jan 2022",
     "enrolled": "18K",
     "language": "English"
@@ -111,7 +111,7 @@
     "title": "Class 11 Physics and Chemistry Course",
     "description": "Strengthen your Physics and Chemistry skills for Class 11",
     "goal": "Class 11",
-    "teachers": ["/teacher4.jpg", "/teacher9.jpg"],
+    "teachers": ["/icons/4.png", "/icons/4.png"],
     "createdDate": "12 Nov 2021",
     "enrolled": "10K",
     "language": "Hindi, English"
@@ -120,7 +120,7 @@
     "title": "IIT/JEE Advanced Intensive Coaching",
     "description": "Advanced strategies for JEE Advanced preparation",
     "goal": "IIT/JEE",
-    "teachers": ["/teacher3.jpg", "/teacher11.jpg"],
+    "teachers": ["/icons/3.png", "/icons/1.png"],
     "createdDate": "28 Sep 2021",
     "enrolled": "9K",
     "language": "English"

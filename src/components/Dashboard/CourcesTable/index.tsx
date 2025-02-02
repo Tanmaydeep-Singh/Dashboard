@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import data from "./courses.json";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import UserAvatarGroup from "./AvatarGroup";
 
 interface Course {
   title: string;
@@ -89,9 +90,7 @@ const CoursesTable = () => {
                 <td className="py-4 px-6 text-sm text-gray-700">{course.description}</td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.goal}</td>
                 <td className="py-4 px-6 text-sm flex space-x-2">
-                  {course.teachers.map((img: string, i: number) => (
-                    <Image key={i} src={"/icons/blob.jpeg"} width={32} height={32} alt="Teacher" className="w-8 h-8 rounded-full border" />
-                  ))}
+                    <UserAvatarGroup users={course.teachers} />
                 </td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.createdDate}</td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.enrolled}</td>
