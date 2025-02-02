@@ -7,7 +7,7 @@ import TopCourses from "@/components/Dashboard/TopCourses";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between m-8 mx-20 space-y-4 md:space-y-0">
+      <div className="flex flex-col md:flex-row justify-between m-2  lg:m-8 lg:mx-20 space-y-4 md:space-y-0">
         <div className="flex flex-col w-full md:w-2/3">
           <CardBlock />
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
