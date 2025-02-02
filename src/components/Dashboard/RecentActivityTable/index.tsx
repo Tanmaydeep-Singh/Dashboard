@@ -31,9 +31,6 @@ const RecentActivityTable = () => {
                 <p className="text-lg text-gray-800">{activity.name}</p>
                 <p className="text-md text-gray-600">{activity.date}</p>
               </td>
-              <td className="py-2 px-6 text-right">
-                <button className="text-blue-600 hover:text-blue-800">View</button>
-              </td>
             </tr>
           ))}
         </tbody>

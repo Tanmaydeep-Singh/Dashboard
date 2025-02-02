@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import data from './courses.json';
 import Image from "next/image";
+import Swal from 'sweetalert2';
 
 const courses = data;
 
@@ -18,10 +19,40 @@ const CoursesTable = () => {
     setCurrentPage(page);
   };
 
+  const handleEdit = (courseTitle: string) => {
+    Swal.fire({
+      title: `Edit Course: ${courseTitle}`,
+      text: 'Do you want to make changes to this course?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Edit',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Editing...', '', 'success');
+      }
+    });
+  };
+
+  const handleDelete = (courseTitle: string) => {
+    Swal.fire({
+      title: `Are you sure you want to delete the course: ${courseTitle}?`,
+      text: 'This action cannot be undone.',
+      icon: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Deleted!', `${courseTitle} has been deleted.`, 'success');
+      }
+    });
+  };
+
   return (
     <div className="container mx-auto p-6">
       <h2 className="text-3xl font-bold text-gray-800 mb-6">Courses List</h2>
-      
+
       <div className="overflow-x-auto bg-white shadow-md rounded-lg">
         <table className="min-w-full">
           <thead className="bg-[#F5F4FF]">
@@ -58,8 +89,18 @@ const CoursesTable = () => {
                 <td className="py-4 px-6 text-sm text-gray-700">{course.enrolled}</td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.language}</td>
                 <td className="py-4 px-6 text-center text-sm flex">
-                  <button className="text-blue-500 hover:text-blue-700"><Image src={'/icons/edit.png'} width={40} height={40} alt="edit" /></button>
-                  <button className="ml-2 text-red-500 hover:text-red-700"><Image src={'/icons/delete.png'} width={40} height={40} alt="delete" /> </button>
+                  <button
+                    className="text-blue-500 hover:text-blue-700"
+                    onClick={() => handleEdit(course.title)}
+                  >
+                    <Image src={'/icons/edit.png'} width={40} height={40} alt="edit" />
+                  </button>
+                  <button
+                    className="ml-2 text-red-500 hover:text-red-700"
+                    onClick={() => handleDelete(course.title)}
+                  >
+                    <Image src={'/icons/delete.png'} width={40} height={40} alt="delete" />
+                  </button>
                 </td>
               </tr>
             ))}
