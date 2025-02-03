@@ -10,7 +10,7 @@ const courses = [
 
 const TopCourses = () => {
     return (
-        <div className="overflow-hidden shadow-md rounded-lg w-full md:w-2/4 h-full">
+        <div className="overflow-hidden border-[#EAECF0] border-2 rounded-lg w-full md:w-2/4 h-auto md:h-[320px] lg:h-auto">
 
             <div className="flex justify-between items-center bg-[#F5F4FF] py-3 px-6 rounded-t-lg">
                 <h2 className="text-lg font-semibold">Top Courses</h2>
@@ -28,7 +28,7 @@ const TopCourses = () => {
                 <tbody>
                     {courses.map((course, index) => (
                         <tr key={index} className=" hover:bg-gray-50">
-                            <td className="p-2">
+                            <td className="p-2 px-6">
                                 <div>
                                     <p className="text-lg ">{course.name}</p>
                                     <p className="text-md text-gray-600">{course.students} Students</p>

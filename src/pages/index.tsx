@@ -6,11 +6,12 @@ import TopCourses from "@/components/Dashboard/TopCourses";
 
 export default function Home() {
   return (
-    <>
-      <div className="flex flex-col xl:flex-row justify-between m-2  lg:m-8 lg:mx-20 space-y-4 md:space-y-0 ">
 
+    <div className="w-full lg:max-w-[90vw] mx-auto">
 
-        <div className="flex flex-col w-full  xl:w-2/3">
+      <div className="container mx-auto flex flex-col xl:flex-row justify-between p-4 gap-5 ">
+
+        <div className="flex flex-col w-full  xl:w-2/3 ">
           <CardBlock />
           <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
             <RecentActivity />
@@ -18,12 +19,12 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full xl:w-1/3 px-6 h-full pt-4">
+        <div className="w-full xl:w-1/3 h-full pt-4">
           <RecentActivityTable />
         </div>
       </div>
 
       <CoursesTable />
-    </>
+    </div>
   );
 }

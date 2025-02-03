@@ -45,16 +45,16 @@ const RecentActivity = () => {
 
 
     return (
-        <div className="overflow-hidden shadow-md rounded-lg w-full md:w-2/4 h-full">
+        <div className="overflow-hidden border-[#EAECF0] border-2 rounded-lg w-full md:w-2/4  h-auto md:h-[320px] lg:h-auto">
             <div className="flex justify-between items-center bg-[#F5F4FF] py-3 px-6 rounded-t-lg">
-                
+
                 <h2 className="text-lg font-semibold">Recent Activity</h2>
                 <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800">
                     <span>View</span>
                     <Image src={'/icons/arrow-right.png'} width={20} height={20} alt="arrow" />
                 </button>
             </div>
-            <div className="mt-2 w-full h-[300px] pt-16">
+            <div className="m-4 w-11/12 h-[280px] pt-16 ">
                 <Line data={data} options={options} className="w-full h-full" />
             </div>
         </div>

@@ -6,7 +6,7 @@ interface UserAvatarGroupProps {
   maxVisible?: number;
 }
 
-const UserAvatarGroup = ({ users, maxVisible = 4 } : UserAvatarGroupProps) => {
+const UserAvatarGroup = ({ users, maxVisible = 3 } : UserAvatarGroupProps) => {
   const visibleUsers = users.slice(0, maxVisible);
   const extraCount = users.length - maxVisible;
 
@@ -23,7 +23,7 @@ const UserAvatarGroup = ({ users, maxVisible = 4 } : UserAvatarGroupProps) => {
         />
       ))}
       {extraCount > 0 && (
-        <div className="w-8 h-8 flex items-center justify-center bg-gray-300 text-xs font-medium text-gray-700 rounded-full border-2 border-white">
+        <div className="w-8 h-8 rounded-full border-2 border-white shadow-md flex items-center justify-center bg-gray-300 text-xs font-medium p-2">
           +{extraCount}
         </div>
       )}

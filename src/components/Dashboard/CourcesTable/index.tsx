@@ -17,6 +17,8 @@ interface Course {
 const CoursesTable = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage: number = 5;
+  const [selectedCourses, setSelectedCourses] = useState<{ [key: number]: boolean }>({});
+  const [selectAll, setSelectAll] = useState<boolean>(false); // Add state for 'select all' checkbox
 
   const indexOfLastItem: number = currentPage * itemsPerPage;
   const indexOfFirstItem: number = indexOfLastItem - itemsPerPage;
@@ -56,25 +58,50 @@ const CoursesTable = () => {
     });
   };
 
-  return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">Courses List</h2>
+  const handleCheckboxChange = (index: number) => {
+    setSelectedCourses((prev) => {
+      const newSelectedCourses = { ...prev, [index]: !prev[index] };
+      const allSelected = currentCourses.every((_, idx) => newSelectedCourses[idx] === true);
+      setSelectAll(allSelected); 
+      return newSelectedCourses;
+    });
+  };
 
-      <div className="overflow-x-auto bg-white shadow-md rounded-lg">
+  const handleSelectAllChange = () => {
+    const newSelectAllState = !selectAll;
+    setSelectAll(newSelectAllState);
+    setSelectedCourses(
+      newSelectAllState
+        ? currentCourses.reduce((acc, _, idx) => ({ ...acc, [idx]: true }), {})
+        : {}
+    );
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+
+      <div className="overflow-x-auto bg-white rounded-lg border-[#EAECF0] border-2">
+      <h2 className="text-3xl font-bold text-gray-800 p-3 w-full bg-[#FCFCFD]">Courses List
+         <span className=" text-sm py-3 rounded-3xl px-6 mx-2 text-[#6941C6] bg-[#F9F5FF]"> {0}+ Cources</span>
+      </h2>
+
         <table className="min-w-full">
-          <thead className="bg-[#F5F4FF]">
+
+          <thead className="bg-[#FCFCFD] w-full">
+
             <tr>
-              {[
-                "Course Title",
-                "Description",
-                "Goal of Course",
-                "Teacher",
-                "Created Date",
-                "Enrolled Students",
-                "Language",
-                "Actions",
-              ].map((header) => (
-                <th key={header} className="py-3 px-6 text-left text-sm font-medium text-gray-600">
+              <th className="p-3 pl-3 text-left text-md font-medium text-gray-600">
+                <input
+                  type="checkbox"
+                  className="appearance-none accent-[#F4EAFF] border-2 border-[#7F56D9] rounded-sm text-[#7F56D9] w-4 h-4 m-2"
+                  checked={selectAll}
+                  onChange={handleSelectAllChange}
+                />
+              </th>
+              <th className="py-3 text-left text-md font-medium text-gray-600"> Course Title </th> 
+
+              {[ "Description", "Goal of Course", "Teacher", "Created Date", "Enrolled Students", "Language", "Actions"].map((header) => (
+                <th key={header} className="py-3 px-6 text-left text-md font-medium text-gray-600">
                   {header}
                 </th>
               ))}
@@ -83,23 +110,37 @@ const CoursesTable = () => {
           <tbody>
             {currentCourses.map((course: Course, index: number) => (
               <tr key={index} className="border-t h-8">
-                <td className="py-4 px-6 text-sm font-medium text-gray-800 flex items-center">
+                <td className="py-4 pl-3 text-md font-medium text-gray-800">
+                  <label className="relative">
+                    <input
+                      type="checkbox"
+                      className="appearance-none accent-[#F4EAFF] border-2 border-[#7F56D9] rounded-sm text-[#7F56D9] w-4 h-4 m-2"
+                      checked={selectedCourses[index] || false}
+                      onChange={() => handleCheckboxChange(index)}
+                    />
+                    <Image
+                      src={'/icons/check-solid.svg'}
+                      height={16}
+                      width={16}
+                      alt="check"
+                      className={`absolute left-2.5 -top-2 w-3 h-3 text-[#7F56D9] ${selectedCourses[index] ? "opacity-100" : "opacity-0"}`}
+                    />
+                  </label>
+                </td>
+                <td className="py-4 px-6 text-lg font-semibold text-black flex items-center">
                   <Image src={"/icons/image.png"} width={38} height={38} alt="Course" className="p-1" />
                   {course.title}
                 </td>
-                <td className="py-4 px-6 text-sm text-gray-700">{course.description}</td>
-                <td className="py-4 px-6 text-sm text-gray-700">{course.goal}</td>
-                <td className="py-4 px-6 text-sm flex space-x-2">
-                    <UserAvatarGroup users={course.teachers} />
+                <td className="py-4 px-6 text-md text-gray-700">{course.description}</td>
+                <td className="py-4 px-6 text-md text-gray-700">{course.goal}</td>
+                <td className="py-4 px-6 text-md flex space-x-2">
+                  <UserAvatarGroup users={course.teachers} />
                 </td>
-                <td className="py-4 px-6 text-sm text-gray-700">{course.createdDate}</td>
-                <td className="py-4 px-6 text-sm text-gray-700">{course.enrolled}</td>
-                <td className="py-4 px-6 text-sm text-gray-700">{course.language}</td>
-                <td className="py-4 px-6 text-center text-sm flex space-x-2">
-                  {[
-                    { icon: "edit.png", action: "edit", color: "blue" },
-                    { icon: "delete.png", action: "delete", color: "red" },
-                  ].map(({ icon, action, color }) => (
+                <td className="py-4 px-6 text-md text-gray-700">{course.createdDate}</td>
+                <td className="py-4 px-6 text-md text-gray-700">{course.enrolled}</td>
+                <td className="py-4 px-6 text-md text-gray-700">{course.language}</td>
+                <td className="py-4 px-6 text-center text-md flex space-x-2">
+                  {[{ icon: "edit.png", action: "edit", color: "blue" }, { icon: "delete.png", action: "delete", color: "red" }].map(({ icon, action, color }) => (
                     <button
                       key={action}
                       className={`text-${color}-500 hover:text-${color}-700`}

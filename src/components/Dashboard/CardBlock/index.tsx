@@ -10,7 +10,7 @@ const CardBlock = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-4 p-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center gap-4 py-4">
       {cards.map(({ id, title, value, icon }) => (
         <Card key={id} title={title} value={value} icon={icon} />
       ))}

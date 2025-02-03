@@ -13,9 +13,11 @@ const activities = [
 
 const RecentActivityTable = () => {
     return (
-        <div className="overflow-hidden bg-white shadow-md rounded-lg pb-3">
-            <div className="flex justify-between items-center bg-[#F5F4FF] py-3 px-6 rounded-t-lg">
-                <h2 className="text-lg font-semibold">Recent Activity</h2>
+        <div className="overflow-hidden bg-white rounded-lg pb-2  border-[#EAECF0] border-2 h-auto">
+            <div className="flex justify-between items-center bg-[#F5F4FF] w-full p-4 rounded-t-lg">
+
+                <h2 className="text-lg font-semibold bg-[#F5F4FF]  ">Recent Activity</h2>
+                
                 <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800">
                     <span>View</span>
                     <Image src={'/icons/arrow-right.png'} width={20} height={20} alt="arrow" />
