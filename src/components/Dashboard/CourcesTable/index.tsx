@@ -62,7 +62,7 @@ const CoursesTable = () => {
     setSelectedCourses((prev) => {
       const newSelectedCourses = { ...prev, [index]: !prev[index] };
       const allSelected = currentCourses.every((_, idx) => newSelectedCourses[idx] === true);
-      setSelectAll(allSelected); 
+      setSelectAll(allSelected);
       return newSelectedCourses;
     });
   };
@@ -81,9 +81,9 @@ const CoursesTable = () => {
     <div className="container mx-auto p-4">
 
       <div className="overflow-x-auto bg-white rounded-lg border-[#EAECF0] border-2">
-      <h2 className="text-lg font-medium text-gray-800 p-3 w-full bg-[#FCFCFD]">Courses List
-         <span className=" text-sm font-medium py-3 rounded-3xl px-6 mx-2 text-[#6941C6] bg-[#F9F5FF]"> {0}+ Cources</span>
-      </h2>
+        <h2 className="text-lg font-medium text-gray-800 p-3 w-full bg-[#FCFCFD]">Courses List
+          <span className=" text-sm font-medium py-3 rounded-3xl px-6 mx-2 text-[#6941C6] bg-[#F9F5FF]"> {0}+ Cources</span>
+        </h2>
 
         <table className="min-w-full">
 
@@ -98,9 +98,9 @@ const CoursesTable = () => {
                   onChange={handleSelectAllChange}
                 />
               </th>
-              <th className="py-3 text-left text-md font-medium text-gray-600"> Course Title </th> 
+              <th className="py-3 text-left text-md font-medium text-gray-600"> Course Title </th>
 
-              {[ "Description", "Goal of Course", "Teacher", "Created Date", "Enrolled Students", "Language", "Actions"].map((header) => (
+              {["Description", "Goal of Course", "Teacher", "Created Date", "Enrolled Students", "Language", "Actions"].map((header) => (
                 <th key={header} className="py-3 px-6 text-left text-md font-medium text-gray-600">
                   {header}
                 </th>
@@ -109,8 +109,8 @@ const CoursesTable = () => {
           </thead>
           <tbody>
             {currentCourses.map((course: Course, index: number) => (
-              <tr key={index} className="border-t h-8">
-                <td className="py-4 pl-3 text-md font-medium text-gray-800">
+              <tr key={index} className="border-t h-auto">
+                <td className="py-4  pl-3  text-md font-medium text-gray-800">
                   <label className="relative">
                     <input
                       type="checkbox"
@@ -127,9 +127,11 @@ const CoursesTable = () => {
                     />
                   </label>
                 </td>
-                <td className="py-4 px-6 text-sm font-medium  text-black flex items-center">
-                  <Image src={"/icons/image.png"} width={38} height={38} alt="Course" className="p-1" />
-                  {course.title}
+                <td className=" text-sm font-medium space-x-2  text-black flex items-center">
+                  <Image src={"/icons/image.png"} width={36} height={36} alt={""} className=" w-9 h-9 " />
+                  <span className="pr-6 md:pr-0">
+                    {course.title}
+                  </span>
                 </td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.description}</td>
                 <td className="py-4 px-6 text-sm text-gray-700">{course.goal}</td>
@@ -146,7 +148,7 @@ const CoursesTable = () => {
                       className={`text-${color}-500 hover:text-${color}-700`}
                       onClick={() => handleAction(action as "edit" | "delete", course.title)}
                     >
-                      <Image src={`/icons/${icon}`} width={40} height={40} alt={action} />
+                      <Image src={`/icons/${icon}`} width={40} height={40} alt={action} className=" w-20 h-10 md:w-10 md:h-10" />
                     </button>
                   ))}
                 </td>
