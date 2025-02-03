@@ -13,10 +13,10 @@ const activities = [
 
 const RecentActivityTable = () => {
     return (
-        <div className="overflow-hidden bg-white rounded-lg pb-2  border-[#EAECF0] border-2 h-auto">
+        <div className="overflow-hidden bg-white rounded-lg pb-3  border-[#EAECF0] border-2 h-auto">
             <div className="flex justify-between items-center bg-[#F5F4FF] w-full p-4 rounded-t-lg">
 
-                <h2 className="text-lg font-semibold bg-[#F5F4FF]  ">Recent Activity</h2>
+                <h2 className="text-xl bg-[#F5F4FF]  ">Recent Activity</h2>
                 
                 <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800">
                     <span>View</span>
@@ -26,11 +26,11 @@ const RecentActivityTable = () => {
 
             <div className="divide-y">
                 {activities.map((activity, index) => (
-                    <div key={index} className="flex items-center gap-4 p-1 m-3 rounded-lg" style={{ backgroundColor: activity.color }}>
+                    <div key={index} className="flex items-center gap-4 p-1 m-2 rounded-lg" style={{ backgroundColor: activity.color }}>
                         <Image src={activity.icon} alt="icon" width={36} height={36} className="w-9 h-9" />
                         <div>
                             <p className="text-lg text-gray-800 font-medium">{activity.name}</p>
-                            <p className="text-sm text-gray-600">{activity.date}</p>
+                            <p className="text-md font-light text-gray-600">{activity.date}</p>
                         </div>
                     </div>
                 ))}

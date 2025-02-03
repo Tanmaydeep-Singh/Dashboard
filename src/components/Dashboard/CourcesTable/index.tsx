@@ -81,8 +81,8 @@ const CoursesTable = () => {
     <div className="container mx-auto p-4">
 
       <div className="overflow-x-auto bg-white rounded-lg border-[#EAECF0] border-2">
-      <h2 className="text-3xl font-bold text-gray-800 p-3 w-full bg-[#FCFCFD]">Courses List
-         <span className=" text-sm py-3 rounded-3xl px-6 mx-2 text-[#6941C6] bg-[#F9F5FF]"> {0}+ Cources</span>
+      <h2 className="text-lg font-medium text-gray-800 p-3 w-full bg-[#FCFCFD]">Courses List
+         <span className=" text-sm font-medium py-3 rounded-3xl px-6 mx-2 text-[#6941C6] bg-[#F9F5FF]"> {0}+ Cources</span>
       </h2>
 
         <table className="min-w-full">
@@ -127,19 +127,19 @@ const CoursesTable = () => {
                     />
                   </label>
                 </td>
-                <td className="py-4 px-6 text-lg font-semibold text-black flex items-center">
+                <td className="py-4 px-6 text-sm font-medium  text-black flex items-center">
                   <Image src={"/icons/image.png"} width={38} height={38} alt="Course" className="p-1" />
                   {course.title}
                 </td>
-                <td className="py-4 px-6 text-md text-gray-700">{course.description}</td>
-                <td className="py-4 px-6 text-md text-gray-700">{course.goal}</td>
-                <td className="py-4 px-6 text-md flex space-x-2">
+                <td className="py-4 px-6 text-sm text-gray-700">{course.description}</td>
+                <td className="py-4 px-6 text-sm text-gray-700">{course.goal}</td>
+                <td className="py-4 px-6 text-sm flex space-x-2">
                   <UserAvatarGroup users={course.teachers} />
                 </td>
-                <td className="py-4 px-6 text-md text-gray-700">{course.createdDate}</td>
-                <td className="py-4 px-6 text-md text-gray-700">{course.enrolled}</td>
-                <td className="py-4 px-6 text-md text-gray-700">{course.language}</td>
-                <td className="py-4 px-6 text-center text-md flex space-x-2">
+                <td className="py-4 px-6 text-sm text-gray-700">{course.createdDate}</td>
+                <td className="py-4 px-6 text-sm text-gray-700">{course.enrolled}</td>
+                <td className="py-4 px-6 text-sm text-gray-700">{course.language}</td>
+                <td className="py-4 px-6 text-center text-sm flex space-x-2">
                   {[{ icon: "edit.png", action: "edit", color: "blue" }, { icon: "delete.png", action: "delete", color: "red" }].map(({ icon, action, color }) => (
                     <button
                       key={action}
